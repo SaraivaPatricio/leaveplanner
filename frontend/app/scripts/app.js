@@ -34,6 +34,11 @@ angular
         controller: 'SettingsCtrl',
         controllerAs: 'settings'
       })
+      .when('/departements', {
+        templateUrl: 'views/departements.html',
+        controller: 'DepartementsCtrl',
+        controllerAs: 'departements'
+      })
       .otherwise({
         redirectTo: '/'
       });
