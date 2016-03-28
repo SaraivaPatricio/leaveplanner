@@ -1,0 +1,9 @@
+/.idea
+/.mvn
+/target
+/frontend/node_modules
+/frontend/dist
+/frontend/.tmp
+/frontend/.sass-cache
+/frontend/bower_components
+
