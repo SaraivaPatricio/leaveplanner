@@ -41,13 +41,13 @@ angular
       })
       .when('/departement', {
         templateUrl: 'views/departement.html',
-        controller: 'DepartementCtrl',
-        controllerAs: 'departement'
+        controller: 'CreateDepartementCtrl',
+        controllerAs: 'createdepartement'
       })
       .when('/departement/:id', {
         templateUrl: 'views/departement.html',
-        controller: 'DepartementCtrl',
-        controllerAs: 'departement'
+        controller: 'EditDepartementCtrl',
+        controllerAs: 'editdepartement'
       })
       .otherwise({
         redirectTo: '/'

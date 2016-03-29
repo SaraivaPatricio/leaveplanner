@@ -12,7 +12,12 @@ import java.util.List;
 public class DepartementController {
   @Autowired
   private DepartementRepository repo;
-  
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public Departement findDepartement(@PathVariable Integer id) {
+        return repo.findOne(id);
+    }
+
   @RequestMapping(method = RequestMethod.GET)
   public List<Departement> findDepartements() {
     return repo.findAll();
