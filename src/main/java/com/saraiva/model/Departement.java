@@ -1,6 +1,9 @@
 package com.saraiva.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Departement {
@@ -13,6 +16,10 @@ public class Departement {
 
   @Column
   private String code;
+
+    @OneToMany(mappedBy="departement")
+    @JsonManagedReference
+    private List<User> users;
 
     public Integer getId() {
         return id;
@@ -37,4 +44,13 @@ public class Departement {
     public void setCode(String code) {
         this.code = code;
     }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
 }

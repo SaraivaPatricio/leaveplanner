@@ -43,7 +43,7 @@
                 <td>{{departement.name}}</td>
                 <td>5</td>
                 <td>
-                  <a ng-href="#/departement" ><button type="button" class="btn btn-success"><i class="glyphicon glyphicon-pencil"></i> Edit</button></a>
+                  <a ng-href="#/departement/{{departement.id}}" ><button type="button" class="btn btn-success"><i class="glyphicon glyphicon-pencil"></i> Edit</button></a>
                   <button type="button" class="btn btn-warning"><i class="glyphicon glyphicon-remove"></i> Delete</button>
                 </td>
               </tr>
@@ -52,7 +52,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                  <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add</button>
+                  <a ng-href="#/departement" ><button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add</button></a>
                 </td>
               </tr>
               </tbody>

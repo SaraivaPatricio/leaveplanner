@@ -1,11 +1,9 @@
 package com.saraiva.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "USER")
@@ -18,6 +16,8 @@ public class User {
 	private boolean accountNonLocked;
 	private boolean credentialsNonExpired;
 	private boolean accountNonExpired;
+
+	private Departement departement;
 
 	public User() {
 		super();
@@ -105,4 +105,14 @@ public class User {
 		this.accountNonExpired = accountNonExpired;
 	}
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "departement_id", nullable = false)
+	@JsonBackReference
+	public Departement getDepartement() {
+		return departement;
+	}
+
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
+	}
 }
