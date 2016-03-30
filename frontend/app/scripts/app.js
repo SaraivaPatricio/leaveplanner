@@ -49,6 +49,11 @@ angular
         controller: 'EditDepartementCtrl',
         controllerAs: 'editdepartement'
       })
+      .when('/employees', {
+        templateUrl: 'views/employees.html',
+        controller: 'EmployeesCtrl',
+        controllerAs: 'employees'
+      })
       .otherwise({
         redirectTo: '/'
       });

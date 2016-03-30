@@ -1,14 +1,16 @@
 package com.saraiva.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "USER")
 public class User {
-	private long id;
+	private Long id;
 	private String username;
 	private String password;
 	private String email;
@@ -23,7 +25,7 @@ public class User {
 		super();
 	}
 
-	public User(long id, String username, String password, String email) {
+	public User(Long id, String username, String password, String email) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -34,11 +36,11 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_USER")
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
