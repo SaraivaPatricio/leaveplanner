@@ -108,7 +108,7 @@ public class User {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "departement_id", nullable = false)
+	@JoinColumn(name = "departement_id")
 	@JsonBackReference
 	public Departement getDepartement() {
 		return departement;

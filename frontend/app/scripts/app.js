@@ -54,6 +54,16 @@ angular
         controller: 'EmployeesCtrl',
         controllerAs: 'employees'
       })
+      .when('/employee', {
+        templateUrl: 'views/employee.html',
+        controller: 'CreateEmployeeCtrl',
+        controllerAs: 'createemployee'
+      })
+      .when('/employee/:id', {
+        templateUrl: 'views/employee.html',
+        controller: 'EditEmployeeCtrl',
+        controllerAs: 'editemployee'
+      })
       .otherwise({
         redirectTo: '/'
       });
