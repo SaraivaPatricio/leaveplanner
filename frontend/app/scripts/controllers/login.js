@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name frontendApp.controller:AboutCtrl
+ * @name frontendApp.controller:LoginCtrl
  * @description
  * # AboutCtrl
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-  .controller('AboutCtrl', function($rootScope, $scope, $http, $location) {
+  .controller('LoginCtrl', function($rootScope, $scope, $http, $location) {
 
     var authenticate = function(credentials, callback) {
 
@@ -33,7 +33,7 @@ angular.module('frontendApp')
 
     authenticate();
     $scope.credentials = {};
-    $scope.login = function() {
+    $scope.authentification = function() {
       authenticate($scope.credentials, function() {
         if ($rootScope.authenticated) {
           $location.path("/");

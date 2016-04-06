@@ -1,8 +1,10 @@
 package com.saraiva.controller;
 
 import com.saraiva.model.Departement;
+import com.saraiva.model.User;
 import com.saraiva.repository.DepartementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,6 +33,8 @@ public class DepartementController {
   
   @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
   public Departement updateDepartement(@RequestBody Departement updatedDepartement, @PathVariable Integer id) {
+    //User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    //updatedDepartement.getUsers().add(user);
     updatedDepartement.setId(id);
     return repo.saveAndFlush(updatedDepartement);
   }
