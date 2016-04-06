@@ -39,12 +39,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.httpBasic().and().logout().and().authorizeRequests()
-			.antMatchers("/","/**").permitAll()
-			//.antMatchers("/index.html","/app/**","/bower_components/**","/").permitAll()
-			//.antMatchers("/items/**").access("hasRole('USER')")
-			.anyRequest()
-			.authenticated().and().csrf()
+		http
+			.antMatcher("/api/**")
+			.authorizeRequests()
+			.anyRequest().authenticated()
+			.and().httpBasic();
+		http.authorizeRequests()
+			.antMatchers("/").permitAll()
+			.anyRequest().authenticated().and().csrf()
 			.csrfTokenRepository(csrfTokenRepository()).and()
 			.addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);
 	}
