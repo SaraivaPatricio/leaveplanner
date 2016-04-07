@@ -8,7 +8,7 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-  .controller('EditDepartementCtrl', function ($scope, $routeParams, departementService) {
+  .controller('EditDepartementCtrl', function ($scope, $routeParams, $location, departementService) {
 
     //$scope.departement.id = $routeParams.id;
     //$scope.departement = {};
@@ -16,7 +16,10 @@ angular.module('frontendApp')
     $scope.departement = departementService.get({ id: $routeParams.id });
 
     $scope.saveDepartement = function(departement) {
-      departement.$update();
+      departement.$update().then(
+        function( value ){$location.path("/departements");},
+        function( error ){}
+        )
     };
 
   });

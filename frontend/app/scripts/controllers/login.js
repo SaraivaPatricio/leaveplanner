@@ -20,6 +20,7 @@ angular.module('frontendApp')
         if (data) {
           $rootScope.userConnected = data;
           $rootScope.authenticated = true;
+          $location.path("/");
         } else {
           $rootScope.authenticated = false;
         }

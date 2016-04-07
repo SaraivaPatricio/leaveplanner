@@ -8,12 +8,15 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-  .controller('CreateDepartementCtrl', function ($scope, $routeParams, departementService) {
+  .controller('CreateDepartementCtrl', function ($scope, $routeParams, $location, departementService) {
 
     $scope.departement = {};
 
     $scope.saveDepartement = function(departement) {
-      new departementService(departement).$save();
+      new departementService(departement).$save().then(
+        function( value ){$location.path("/departements");},
+        function( error ){}
+      );
     };
 
   });
