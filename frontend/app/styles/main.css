@@ -81,3 +81,31 @@ body {
     border-bottom: 0;
   }
 }
+
+.slide-animation {
+  opacity: 1;
+  position: relative;
+  left:0%;
+}
+.slide-animation.ng-enter {
+  -webkit-transition: all 0.75s ease;
+  transition: all 0.75s ease;
+  opacity: 0;
+  left:15%;
+}
+.slide-animation.ng-enter-active {
+  opacity: 1;
+  left:0%;
+}
+
+.remove-animation {
+  opacity: 1;
+}
+.remove-animation.ng-leave {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+.remove-animation.ng-leave-active {
+  opacity: 0;
+}
