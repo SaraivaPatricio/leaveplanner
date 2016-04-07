@@ -69,10 +69,10 @@ angular
       });
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 
-  }).run( function($rootScope, $location) {
+  }).run( function($rootScope, $location, $http) {
   // register listener to watch route changes
   $rootScope.$on( "$routeChangeStart", function(event, next, current) {
-    if ( $rootScope.userConnected == null ) {
+    if ( $rootScope.authenticated == null || $rootScope.authenticated == false) {
       // no logged user, we should be going to #login
       if ( next.templateUrl == "login.html" ) {
         // already going to #login, no redirect needed
@@ -82,4 +82,15 @@ angular
       }
     }
   });
+  $rootScope.logout = function() {
+    $http.post('/api/logout', {}).success(function() {
+      $rootScope.userConnected = {};
+      $rootScope.authenticated = false;
+
+      $location.path("/login");
+    }).error(function(data) {
+      $rootScope.userConnected = {};
+      $rootScope.authenticated = false;
+    });
+  }
 });

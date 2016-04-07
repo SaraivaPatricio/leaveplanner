@@ -19,7 +19,7 @@ public class UserController {
     return repo.findOne(id);
   }
 
-  @RequestMapping("/connected")
+  @RequestMapping(value = "/connected", method = RequestMethod.GET)
   public Principal user(Principal user) {
     return user;
   }

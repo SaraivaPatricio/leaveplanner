@@ -17,7 +17,7 @@ angular.module('frontendApp')
       } : {};
 
       $http.get('/api/user/connected', {headers : headers}).success(function(data) {
-        if (data.principal.id) {
+        if (data) {
           $rootScope.userConnected = data;
           $rootScope.authenticated = true;
         } else {

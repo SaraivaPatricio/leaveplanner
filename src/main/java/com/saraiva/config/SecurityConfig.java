@@ -21,6 +21,7 @@ import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.WebUtils;
 
@@ -39,16 +40,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http
-			.antMatcher("/api/**")
-			.authorizeRequests()
-			.anyRequest().authenticated()
-			.and().httpBasic();
-		http.authorizeRequests()
-			.antMatchers("/").permitAll()
-			.anyRequest().authenticated().and().csrf()
-			.csrfTokenRepository(csrfTokenRepository()).and()
-			.addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);
+
+		http.httpBasic().and().formLogin()
+				.loginPage("/api/login").and()
+				.logout().logoutRequestMatcher(new AntPathRequestMatcher("/api/logout"))
+				.logoutSuccessUrl("/api/user/connected").clearAuthentication(true).deleteCookies().invalidateHttpSession(true)
+				.permitAll().and().authorizeRequests()
+				.antMatchers("/").permitAll().anyRequest()
+				.authenticated().and().csrf()
+				.csrfTokenRepository(csrfTokenRepository()).and()
+				.addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);
+
 	}
 
 	private Filter csrfHeaderFilter() {
