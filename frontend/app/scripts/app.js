@@ -64,6 +64,11 @@ angular
         controller: 'EditEmployeeCtrl',
         controllerAs: 'editemployee'
       })
+      .when('/calendar', {
+        templateUrl: 'views/calendar.html',
+        controller: 'CalendarCtrl',
+        controllerAs: 'calendar'
+      })
       .otherwise({
         redirectTo: '/'
       });
