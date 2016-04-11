@@ -1,0 +1,139 @@
+  <div class="well">
+    <form>
+      <label>Employees</label>
+      <ul>
+        <li>Eric</li>
+        <li>Paul</li>
+      </ul>
+      <div class="form-inline">
+        <select class="form-control">
+          <option>-</option>
+          <option>Bob</option>
+          <option>Alice</option>
+          <option>Steve</option>
+        </select>
+        <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></button>
+      </div>
+      <br>
+      <label>Leave Type</label>
+      <select class="form-control">
+        <option>-</option>
+        <option>Holidays</option>
+        <option>Sick</option>
+        <option>Maternity</option>
+        <option>Other</option>
+      </select>
+      <br>
+      <div class="form-inline">
+        <div class="row">
+          <div class="form-group col-md-4">
+            <label for="begin-date">Begin Date</label>
+            <input type="date" ng-model="leaveRequest.beginDate" class="form-control pull-right" id="begin-date" >
+          </div>
+          <div class="form-group col-md-3">
+            <label>Begin Hour</label>
+            <select class="form-control pull-right">
+              <option>-</option>
+              <option>01h</option>
+              <option>02h</option>
+              <option>03h</option>
+              <option>04h</option>
+              <option>05h</option>
+              <option>06h</option>
+              <option>07h</option>
+              <option>08h</option>
+              <option>09h</option>
+              <option>10h</option>
+              <option>11h</option>
+              <option>12h</option>
+              <option>13h</option>
+              <option>14h</option>
+              <option>15h</option>
+              <option>16h</option>
+              <option>17h</option>
+              <option>18h</option>
+              <option>19h</option>
+              <option>20h</option>
+              <option>21h</option>
+              <option>22h</option>
+              <option>23h</option>
+              <option>00h</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2">
+            <label>Min</label>
+            <select class="form-control pull-right">
+              <option>-</option>
+              <option>00</option>
+              <option>15</option>
+              <option>30</option>
+              <option>45</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-inline">
+        <div class="row">
+          <div class="form-group col-md-4">
+            <label for="end-date">End Date</label>
+            <input type="date" ng-model="leaveRequest.endDate" class="form-control pull-right" id="end-date" >
+          </div>
+          <div class="form-group col-md-3">
+            <label class="pull-left">End Hour</label>
+            <select class="form-control pull-right">
+              <option>-</option>
+              <option>01h</option>
+              <option>02h</option>
+              <option>03h</option>
+              <option>04h</option>
+              <option>05h</option>
+              <option>06h</option>
+              <option>07h</option>
+              <option>08h</option>
+              <option>09h</option>
+              <option>10h</option>
+              <option>11h</option>
+              <option>12h</option>
+              <option>13h</option>
+              <option>14h</option>
+              <option>15h</option>
+              <option>16h</option>
+              <option>17h</option>
+              <option>18h</option>
+              <option>19h</option>
+              <option>20h</option>
+              <option>21h</option>
+              <option>22h</option>
+              <option>23h</option>
+              <option>00h</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2">
+            <label>Min</label>
+            <select class="form-control pull-right">
+              <option>-</option>
+              <option>00</option>
+              <option>15</option>
+              <option>30</option>
+              <option>45</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <label>Substitute</label>
+      <select class="form-control">
+        <option>-</option>
+        <option>Alice</option>
+        <option>Peter</option>
+        <option>Bob</option>
+        <option>Eric</option>
+        <option>Steve</option>
+      </select>
+      <label>Comment</label>
+      <textarea class="form-control" rows="3"></textarea>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="button" ng-click="addLeaveRequest(leaveRequest)" class="btn btn-primary">Save</button>
+
+    </form>
+  </div>
+

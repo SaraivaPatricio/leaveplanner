@@ -69,6 +69,11 @@ angular
         controller: 'CalendarCtrl',
         controllerAs: 'calendar'
       })
+      .when('/createleave', {
+        templateUrl: 'views/createleave.html',
+        controller: 'CreateleaveCtrl',
+        controllerAs: 'createleave'
+      })
       .otherwise({
         redirectTo: '/'
       });
