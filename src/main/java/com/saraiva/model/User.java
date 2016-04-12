@@ -1,16 +1,14 @@
 package com.saraiva.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "USER")
 public class User {
-	private Long id;
+	private Integer id;
 	private String username;
 	private String password;
 	private String email;
@@ -21,11 +19,13 @@ public class User {
 
 	private Departement departement;
 
+	private List<LeaveRequest> leaveRequests;
+
 	public User() {
 		super();
 	}
 
-	public User(Long id, String username, String password, String email) {
+	public User(Integer id, String username, String password, String email) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -36,11 +36,11 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_USER")
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -116,5 +116,15 @@ public class User {
 
 	public void setDepartement(Departement departement) {
 		this.departement = departement;
+	}
+
+	@OneToMany(mappedBy="employee")
+	@JsonManagedReference
+	public List<LeaveRequest> getLeaveRequests() {
+		return leaveRequests;
+	}
+
+	public void setLeaveRequests(List<LeaveRequest> leaveRequests) {
+		this.leaveRequests = leaveRequests;
 	}
 }

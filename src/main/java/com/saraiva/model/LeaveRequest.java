@@ -1,5 +1,8 @@
 package com.saraiva.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -18,6 +21,14 @@ public class LeaveRequest {
 
     @Column
     private String comment;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="employee_id", updatable=false, insertable=false)
+    @JsonBackReference
+    private User employee;
+
+  @Column(name="employee_id", updatable=true, insertable=true)
+  private Integer employee_id;
 
   public Integer getId() {
     return id;
@@ -49,5 +60,21 @@ public class LeaveRequest {
 
   public void setComment(String comment) {
     this.comment = comment;
+  }
+
+    public User getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(User employee) {
+        this.employee = employee;
+    }
+
+  public Integer getEmployee_id() {
+    return employee_id;
+  }
+
+  public void setEmployee_id(Integer employee_id) {
+    this.employee_id = employee_id;
   }
 }

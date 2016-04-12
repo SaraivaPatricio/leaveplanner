@@ -15,7 +15,7 @@ public class UserController {
   private UserRepository repo;
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-  public User findUser(@PathVariable Long id) {
+  public User findUser(@PathVariable Integer id) {
     return repo.findOne(id);
   }
 
@@ -36,13 +36,13 @@ public class UserController {
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-  public User updateUser(@RequestBody User updatedUser, @PathVariable Long id) {
+  public User updateUser(@RequestBody User updatedUser, @PathVariable Integer id) {
     updatedUser.setId(id);
     return repo.saveAndFlush(updatedUser);
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-  public void deleteUser(@PathVariable Long id) {
+  public void deleteUser(@PathVariable Integer id) {
     repo.delete(id);
   }
 }

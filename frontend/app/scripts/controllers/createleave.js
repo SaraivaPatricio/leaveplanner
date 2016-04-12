@@ -8,12 +8,13 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-  .controller('CreateleaveCtrl', function ($scope, $location, leaveRequestService) {
+  .controller('CreateleaveCtrl', function ($scope, $location,$rootScope, leaveRequestService) {
     leaveRequestService.query(function(response) {
       $scope.leaveRequestList = response ? response : [];
     });
 
     $scope.addLeaveRequest = function(leaveRequest) {
+      leaveRequest.employee_id = $rootScope.userConnected.principal.id;
       new leaveRequestService(leaveRequest).$save(function(leaveRequest) {
         $scope.leaveRequestList.push(leaveRequest);
       }).then(

@@ -4,6 +4,7 @@ import com.saraiva.model.LeaveRequest;
 import com.saraiva.model.User;
 import com.saraiva.repository.LeaveRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -27,12 +28,9 @@ public class LeaveRequestController {
 
   @RequestMapping(value = "/findLeaveInYear/{year}", method = RequestMethod.GET)
   public ArrayList<ArrayList> findLeaveInYear(@PathVariable Integer year) {
-
-      //TODO
-      //User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-      //user.getId();
-
-      List<LeaveRequest> leaveRequests = repo.findAll();
+      
+      User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+      List<LeaveRequest> leaveRequests = repo.findByUserId(user.getId());
 
       Calendar cal = Calendar.getInstance();
       cal.set(Calendar.YEAR, (year + 1));
@@ -87,12 +85,16 @@ public class LeaveRequestController {
   @RequestMapping(method = RequestMethod.POST)
   public LeaveRequest addLeaveRequest(@RequestBody LeaveRequest leaveRequest) {
       leaveRequest.setId(null);
+      //User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+      //leaveRequest.setEmployee(user);
       return repo.saveAndFlush(leaveRequest);
   }
   
   @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
   public LeaveRequest updateLeaveRequest(@RequestBody LeaveRequest updatedLeaveRequest, @PathVariable Integer id) {
     updatedLeaveRequest.setId(id);
+      //User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+      //updatedLeaveRequest.setEmployee(user);
     return repo.saveAndFlush(updatedLeaveRequest);
   }
   
