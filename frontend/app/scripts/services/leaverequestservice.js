@@ -8,8 +8,8 @@
  * Factory in the frontendApp.
  */
 angular.module('frontendApp')
-  .factory('leaveRequestService', function ($resource) {
-    return $resource('/api/leave-request/:id', {
+  .factory('leaveRequestService', function ($resource, $http) {
+    var leaveRequestService = $resource('/api/leave-request/:id', {
       id: '@id'
     }, {
       update: {
@@ -19,4 +19,10 @@ angular.module('frontendApp')
         method: "DELETE"
       }
     });
+
+    leaveRequestService.calendar = function(year){
+      return $http.get("/api/leave-request/findLeaveInYear/"+year);
+    };
+
+    return leaveRequestService;
   });

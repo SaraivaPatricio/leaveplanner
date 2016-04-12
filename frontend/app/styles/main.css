@@ -109,3 +109,43 @@ body {
 .remove-animation.ng-leave-active {
   opacity: 0;
 }
+
+
+td {
+  border: 1px solid #e5e6ea;
+}
+
+.leave {
+  background-color: #cc6699;
+  border-left: 1px solid #cc6699;
+  border-right: 1px solid #cc6699;
+}
+
+.day-off{
+  background-color: #e4e3e4;
+  border-left: 1px solid #e4e3e4;
+  border-right: 1px solid #e4e3e4;
+}
+
+
+.top-panel {
+  margin:20px;
+}
+
+add-leave {
+  padding:20px;
+  background-color: #000000;
+}
+
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
+.legend {
+  width: 10px;
+  height: 10px;
+  display: inline;
+}
