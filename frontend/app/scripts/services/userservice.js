@@ -8,8 +8,8 @@
  * Factory in the frontendApp.
  */
 angular.module('frontendApp')
-  .factory('userService', function ($resource) {
-    return $resource('/api/user/:id', {
+  .factory('userService', function ($resource, $http) {
+    var resource = $resource('/api/user/:id/', {
       id: '@id'
     }, {
       update: {
@@ -17,6 +17,14 @@ angular.module('frontendApp')
       },
       remove: {
         method: "DELETE"
+      },
+      notInDepartement: {
+        method: "GET",
+        isArray:true,
+        params:{departementId: '@departementId'},
+        url: 'api/user/userNotInDepartement/:departementId'
       }
     });
+
+    return resource;
   });

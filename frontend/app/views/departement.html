@@ -24,25 +24,24 @@
     </div>
     <div class="panel-body">
       <fieldset class="form-group">
-        <label for="exampleSelect2" class="col-sm-2 control-label">Manager</label>
+        <label class="col-sm-2 control-label">Manager</label>
         <div class="form-inline col-sm-10">
-          <select class="form-control">
-            <option>-</option>
-            <option>Bob</option>
-            <option>Alice</option>
-            <option>Steve</option>
-          </select>
-          <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></button>
+
+
+          <select name="mySelect" id="mySelect"
+                  ng-options="employee.username for employee in employeeList|filter:inDepartement"
+                  ng-model="selectedEmployee"></select>
+          <button type="submit" ng-click="addEmployee(selectedEmployee)" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></button>
         </div>
         <br>
       </fieldset>
       <table class="table table-striped">
         <tbody>
-        <tr  ng-repeat="user in departement.users">
-          <td>{{user.username}}</td>
+        <tr  ng-repeat="employee in employeeList|filter:notInDepartement">
+          <td>{{employee.username}}</td>
           <td>
             <button type="submit" class="btn btn-success">Edit</button>
-            <button type="submit" class="btn btn-warning">Delete</button>
+            <button type="submit" ng-click="removeEmployee(employee)" class="btn btn-warning"><i class="glyphicon glyphicon-trash"></i></button>
           </td>
         </tr>
         </tbody>
@@ -57,16 +56,8 @@
     </div>
     <div class="panel-body">
       <fieldset class="form-group">
-        <label for="exampleSelect2" class="col-sm-2 control-label">Employees</label>
-        <div class="form-inline col-sm-10">
-          <select class="form-control">
-            <option>-</option>
-            <option>Bob</option>
-            <option>Alice</option>
-            <option>Steve</option>
-          </select>
-          <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></button>
-        </div>
+        <label class="col-sm-2 control-label">Employees</label>
+        <div class="form-inline col-sm-10"></div>
         <br>
       </fieldset>
 

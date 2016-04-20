@@ -8,9 +8,13 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-  .controller('CreateDepartementCtrl', function ($scope, $routeParams, $location, departementService) {
+  .controller('CreateDepartementCtrl', function ($scope, $routeParams, $location, departementService, userService) {
 
     $scope.departement = {};
+
+    userService.query(function(response) {
+      $scope.employeeList = response ? response : {};
+    });
 
     $scope.saveDepartement = function(departement) {
       new departementService(departement).$save().then(

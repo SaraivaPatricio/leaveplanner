@@ -28,7 +28,7 @@ public class LeaveRequestController {
 
   @RequestMapping(value = "/findLeaveInYear/{year}", method = RequestMethod.GET)
   public ArrayList<ArrayList> findLeaveInYear(@PathVariable Integer year) {
-      
+
       User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
       List<LeaveRequest> leaveRequests = repo.findByUserId(user.getId());
 

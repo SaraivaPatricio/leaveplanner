@@ -1,12 +1,20 @@
 package com.saraiva.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.None.class, property = "id", scope = Departement.class)
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Departement {
+
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Integer id;
@@ -18,8 +26,8 @@ public class Departement {
   private String code;
 
     @OneToMany(mappedBy="departement")
-    @JsonManagedReference
-    private List<User> users;
+    @JsonIgnoreProperties({"departement"})
+    public List<User> users;
 
     public Integer getId() {
         return id;

@@ -5,9 +5,15 @@ import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
 import java.util.List;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 @Table(name = "USER")
+@JsonIdentityInfo(generator = ObjectIdGenerators.None.class, property = "id", scope = User.class)
 public class User {
+
 	private Integer id;
 	private String username;
 	private String password;
@@ -17,7 +23,8 @@ public class User {
 	private boolean credentialsNonExpired;
 	private boolean accountNonExpired;
 
-	private Departement departement;
+
+    private Departement departement;
 
 	private List<LeaveRequest> leaveRequests;
 
@@ -35,7 +42,7 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_USER")
+	@Column
 	public Integer getId() {
 		return id;
 	}
@@ -109,7 +116,6 @@ public class User {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "departement_id")
-	@JsonBackReference
 	public Departement getDepartement() {
 		return departement;
 	}

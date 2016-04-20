@@ -20,6 +20,11 @@ public class DepartementController {
         return repo.findOne(id);
     }
 
+  @RequestMapping(value = "/{id}/users", method = RequestMethod.GET)
+  public List<User> findDepartementUsers(@PathVariable Integer id) {
+    return repo.findOne(id).getUsers();
+  }
+
   @RequestMapping(method = RequestMethod.GET)
   public List<Departement> findDepartements() {
     return repo.findAll();
@@ -33,8 +38,12 @@ public class DepartementController {
   
   @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
   public Departement updateDepartement(@RequestBody Departement updatedDepartement, @PathVariable Integer id) {
-    //User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    //updatedDepartement.getUsers().add(user);
+
+    /*
+    for (User user: updatedDepartement.getUsers()) {
+      user.setDepartement(updatedDepartement);
+    }
+    //*/
     updatedDepartement.setId(id);
     return repo.saveAndFlush(updatedDepartement);
   }

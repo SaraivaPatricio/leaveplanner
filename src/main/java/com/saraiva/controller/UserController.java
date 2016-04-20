@@ -29,6 +29,11 @@ public class UserController {
     return repo.findAll();
   }
 
+  @RequestMapping(value = "/userNotInDepartement/{id}", method = RequestMethod.GET)
+  public List<User> getUserNotInDepartement(@PathVariable Integer id) {
+      return repo.notInDepartement(id);
+  }
+
   @RequestMapping(method = RequestMethod.POST)
   public User addUser(@RequestBody User user) {
     user.setId(null);
