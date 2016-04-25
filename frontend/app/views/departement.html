@@ -57,31 +57,23 @@
     <div class="panel-body">
       <fieldset class="form-group">
         <label class="col-sm-2 control-label">Employees</label>
-        <div class="form-inline col-sm-10"></div>
+        <div class="form-inline col-sm-10">
+
+
+          <select name="mySelect"
+                  ng-options="employee.username for employee in employeeList|filter:inDepartement"
+                  ng-model="selectedEmployee"></select>
+          <button type="submit" ng-click="addEmployee(selectedEmployee)" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></button>
+        </div>
         <br>
       </fieldset>
-
       <table class="table table-striped">
         <tbody>
-        <tr>
-          <td>Alice</td>
+        <tr  ng-repeat="employee in employeeList|filter:notInDepartement">
+          <td>{{employee.username}}</td>
           <td>
             <button type="submit" class="btn btn-success">Edit</button>
-            <button type="submit" class="btn btn-warning">Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td>bob</td>
-          <td>
-            <button type="submit" class="btn btn-success">Edit</button>
-            <button type="submit" class="btn btn-warning">Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Steve</td>
-          <td>
-            <button type="submit" class="btn btn-success">Edit</button>
-            <button type="submit" class="btn btn-warning">Delete</button>
+            <button type="submit" ng-click="removeEmployee(employee)" class="btn btn-warning"><i class="glyphicon glyphicon-trash"></i></button>
           </td>
         </tr>
         </tbody>

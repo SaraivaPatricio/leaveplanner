@@ -24,11 +24,8 @@
           </fieldset>
           <fieldset class="form-group">
             <label for="exampleSelect2">Team</label>
-            <select class="form-control" id="exampleSelect2">
-              <option>-</option>
-              <option>Developement</option>
-              <option>Finance</option>
-              <option>Product</option>
+            <select class="form-control" ng-options="departement as departement.name for departement in departements track by departement.id" ng-model="departementSelected">
+              <option value="">Unknown</option>
             </select>
           </fieldset>
           <fieldset>
